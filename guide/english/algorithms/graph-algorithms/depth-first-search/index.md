@@ -10,7 +10,7 @@ Depth First Search is one of the most simple graph algorithms. It traverses the 
 
 ![](https://upload.wikimedia.org/wikipedia/commons/7/7f/Depth-First-Search.gif)
 
-### Implementation (C++14)
+### Recursive Implementation (C++14)
 
  ```c++
 #include <iostream> 
@@ -92,7 +92,7 @@ Space Complexity: O(n)
 Worse Case Time Complexity: O(n)
 Depth First Search is complete on a finite set of nodes. I works better on shallow trees.
 
-### Implementation of DFS in C++
+### Recursive Implementation of DFS in C++
 ```c++
 #include<iostream>
 #include<vector>
@@ -147,10 +147,71 @@ vector<int> Graph::DFS(int s){
 }
 ```
 
+### Iterative Implementation of DFS(C++14)
+Following is the Iterative Implementation of Depth First Search Graph Algorithm using Stack.
+The Graph for which this code is written is undirected.
+```c++
+// Iterative Implementation of Depth First Search Graph Alogrithm
+
+#include <bits/stdc++.h>
+using namespace std;
+#define MAX 100005              // MAX Number of Nodes in Graph
+bool visited[MAX]={false};
+vector<int> adj[MAX];
+
+void dfs(int src)
+{
+    stack<int> st;
+
+    st.push(src);       // Pushing the source node in the stack
+
+    while(!st.empty()){
+    	int u = st.top();
+    	st.pop();
+
+    	if(visited[u]) continue;
+
+    	cout << u << " ";       // Printing the current node
+
+    	visited[u] = true;
+
+    	for(int v:adj[u]){      // Pushing all the neighbours of the current node in the stack
+    		st.push(v);
+    	}
+    }
+}
+
+int main()
+{
+    int nodes,edges,u,v;
+    cin >> nodes >> edges;
+
+    for(int i = 0;i < edges;i++)
+    {
+        cin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    
+    cout << "Following is the Depth First Traversal of the given Graph:\n";
+    for(int i = 1;i <= nodes;i++){
+    	if(!visited[i])
+    		dfs(i);
+    }
+    return 0;
+}
+
+```
+Time Complexity: O(nodes + edges)
+
+Space Complexity: O(MAX)
+
 #### More Information:
 <!-- Please add any articles you think might be helpful to read before writing the article -->
 
 <a href='https://github.com/freecodecamp/guides/computer-science/data-structures/graphs/index.md' target='_blank' rel='nofollow'>Graphs</a>
+
+<a href='https://www.hackerearth.com/practice/algorithms/graphs/graph-representation/tutorial/' target='_blank' rel='nofollow'>Graphs Representation </a>
 
 <a href='https://github.com/freecodecamp/guides/tree/master/src/pages/algorithms/graph-algorithms/breadth-first-search/index.md' target='_blank' rel='nofollow'>Breadth First Search (BFS)</a>
 
