@@ -46,6 +46,18 @@ def fib(n)
 ```
 Caching computed solutions in a lookup table, and query it before go recursion will let the program have a running time of O(N).
 
+
+### Example: Number of ways to reach Nth Stair
+
+Suppose, there are N stairs, a person is standing at the bottom and wants to reach the top i.e. the Nth stair. The person can climb either 1 stair or 2 stairs at a time. Count the number of ways, the person can reach the top.
+
+Now let the number of ways to reach the Nth stair be written as ans(N).
+So, Now the person can reach the Nth stair from either (N-1)th stair(by taking a step of 1) or from (N-2)th stair(by taking a step of 2).So, the number of ways to reach the Nth stair is just the number of ways to reach the (N-1)th stair and number of ways to reach the (N-2)th stair.It can be written as following:
+
+``` ans(N) = ans(N-1) + ans(N-2)```
+
+So, as we can see from the above expression, the problem again boils down to just computing the Nth fibonacci number, which has already been described in the above example.In other words,the number of ways to reach the Nth stair is the Nth fibonacci number with initial conditions as ```ans(1) = 1``` ```ans(2) = 2```.
+
 #### More Information:
 
 [What is dynamic programming on StackOverflow](https://stackoverflow.com/questions/1065433/what-is-dynamic-programming")
