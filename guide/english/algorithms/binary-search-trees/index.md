@@ -281,3 +281,19 @@ Complete Binary Tree: A Binary Tree is complete Binary Tree if all levels are co
       40    50    100   40
      /  \   /
     8   7  9 
+
+### Perfect Binary Tree:
+A Binary Tree is a Perfect Binary Tree in which all the internal nodes have two childern and all the leaf nodes are at the same level.
+
+A Perfect Binary Tree of height h(where height is the maximum number of nodes on the path from root to leaf) has total 2<sup>h</sup>– 1 nodes.
+
+              18
+           /       \  
+         15         30  
+        /  \        /  \
+      40    50    100   40
+ 
+ Here height (h) = 3, and so total number of nodes is 2<sup>3</sup>-1 = 7.
+ 
+ ### Balanced Binary Tree:
+ A Binary Tree is a balanced binary tree if it has a `O(log n)` height where n is the number of nodes. We have two well known examples of Balanced binary trees, AVL trees and Red-Black trees. AVL Trees maintain `O(log n)` height by making sure that the difference between the height of the left and the right subtrees is atmost 1.By doing this,we can guarantee `O(log n)` height. On the other hand, Red-Black trees maintain `O(log n)` height by making sure that the number of Black nodes on every root to leaf paths are same and there are no adjacent red nodes. Balanced Binary Search Trees are performance wise best as they provide `O(log n)` time for insertion,searching and deletion.
