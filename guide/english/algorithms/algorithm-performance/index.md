@@ -87,4 +87,49 @@ We can confirm this analysis using [this handy big-O cheat sheet</a> that featur
 It is very apparent that while for small use cases this time complexity might be alright, at a large scale bubble sort is simply not a good solution for sorting.  
 This is the power of big-O notation: it allows developers to easily see the potential bottlenecks of their application, and take steps to make these more scalable.
 
+
 For more information on why big-O notation and algorithm analysis is important visit this <a href='https://www.freecodecamp.com/videos/big-o-notation-what-it-is-and-why-you-should-care' target='_blank' rel='nofollow'>video challenge</a>!
+
+### Example 2:
+What is the time and space complexity of the following code:
+
+```
+        int a = 0, b = 0;    
+        for (i = 0; i < N; i++) {
+            a = a + myFunction();  
+        }
+        for (j = 0; j < M; j++) {
+            b = b + myFunction();
+        }
+```
+Assume that the function myFunction() is O(1) time and O(1) space function.
+
+In the above code, we can see that the first for loop executes from i = 0 to i = N, and for each i, we are doing `a = a + myFunction()`, and as we know that myFunction() is a constant time and space function, so the body of the for loop contains only O(1) instructions, and those instructions are executed **N** times,hence the first for loop is **O(N)**.
+Similarly, the second for loop is same as well, so it is **O(M)**.
+
+So, the total time complexity of the code is ```O(N) + O(M)``` or ```O(N + M)```. As No extra space is used, So the overall Space complexity is ```O(1)```.
+
+### Example 3:
+What is the Time Complexity of the following code :
+
+```
+    int i, j, k = 0;
+    for (i  = N/2; i <= N; i++) {
+        for (j = 2; j <= N; j *= 2) {
+            k = k + N/2;
+        }
+    }
+```
+
+Let's first Analyse the inner for loop and calculate its time complexity. As we can see that the inner loop runs independent of the outer loop's variable(i), so it is easy to calculate. The inner loop variable **j** runs from **j=2 to j=N** but doubling the value of j at each iteration.In other words, what inner loop does is it starts the variable j from 2 and keep doubling itself until it is less than **N** which can be written as:
+
+``` 2*2*2*.....*2 <= N ```
+
+=> 2<sup>x</sup> <= N
+
+=> x <= log<sub>2</sub>N
+
+All the instructions inside the inner loop are ```O(1)``` as they are basic arithmetic operations. So, the inner loop runs O(log<sub>2</sub>N) times, independent of the outer loop.
+Now, it is easy to calculate the time for outer loop, as we can see the outer loop runs from **i=N/2 to i=N**. So the outer loop runs only ```O(N/2)``` times.
+
+So, the overall time complexity of the code is ```O(N/2 * logN) = O(N logN) ```.
